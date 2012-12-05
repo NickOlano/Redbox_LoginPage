@@ -1,0 +1,56 @@
+/* (c) Jeff Stern and Nick Olano, 2012 */
+
+@charset "UTF-8";
+
+body, p, h1, h2, h3 {
+ font-family: Arial,  sans-serif;
+}
+
+#registration {  
+  width: 370px;
+}
+
+.label {
+  background-image:
+    url('http://170.224.168.181:9081/NOJShomework7/resources/ico_reqd.png');
+  background-repeat: no-repeat;
+  background-size: 10px;
+  background-position: left center;
+  font-size: small;
+  padding-left: 12px;
+}
+
+.inputError {
+  border-color: red;
+}
+
+.error {
+  color: red;
+}
+
+.errors {
+  color: red;
+  list-style: none;
+  font-size: small;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.submit {
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  width: 90px;  
+}
+
+input {
+  width: 150px;
+}
+
+.errorbox {
+  border: solid 1px red;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  padding: 20px;
+ }
+

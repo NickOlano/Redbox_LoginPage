@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- jsf:pagecode language="java" location="/src/pagecode/Ontrack.java" --><!-- /jsf:pagecode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+    <f:view locale="#{facesContext.externalContext.requestLocale}">
+    
+<h:head>
+    <title>#{msgs.pagetitle}</title>
+    <meta http-equiv="Content-Type"
+        content="application/xhtml+xml; charset=UTF-8" />
+    <meta name="copyright" content="© 2012 by Jeff Stern and Nick Olano" />
+
+    <h:outputStylesheet library="css" name="redbox.css" />
+</h:head>
+<body>
+    
+    <div id="registration">
+
+    <h:messages styleClass="errorbox" errorClass="errors" />
+    
+	<h3>#{msgs.pgheader}</h3>
+	<p>#{msgs.info}</p>
+	<p>
+	  #{msgs.info2} <img src="resources/ico_reqd.png" alt="Arrow" />
+	  #{msgs.info2b}
+	</p>
+	
+	<h:form>
+	
+	<h:outputText styleClass="label #{!fname.valid ? 'error' : ''}"
+        value="#{msgs.fname}" /><br />
+	<h:inputText binding="#{fname}" value="#{redbox.fname}"
+	   styleClass="#{not component.valid ? 'inputError' : ''}"
+	   required="True"
+	   requiredMessage="#{msgs.fnameerror}" />
+	<br />
+	
+	<h:outputText styleClass="label #{!lname.valid ? 'error' : ''}"
+        value="#{msgs.lname}" /><br />
+	<h:inputText binding="#{lname}" value="#{redbox.lname}" 
+	   styleClass="#{not component.valid ? 'inputError' : ''}"
+       required="True"
+	   requiredMessage="#{msgs.lnameerror}"   />
+	<br />
+	
+	<h:outputText styleClass="label #{!email.valid ? 'error' : ''}"
+	   value="#{msgs.em}" /><br />
+	<h:inputText binding="#{email}" value="#{redbox.email}" 
+	   styleClass="#{not component.valid ? 'inputError' : ''}"
+       required="True"
+	   requiredMessage="#{msgs.emerror}" validatorMessage="#{msgs.emerror2}" >
+	   <f:validateRegex
+	     pattern="^[A-za-z]+[A-Za-z0-9]*@[A-Za-z0-9]+\.[A-Za-z]{2,4}$"
+	   />
+	</h:inputText>
+    <br />
+    
+	<h:outputText styleClass="label #{!password.valid ? 'error' : ''}"
+	   value="#{msgs.pw}" /><br />
+	<h:inputSecret binding="#{password}" value="#{redbox.password}"
+	   styleClass="#{not component.valid ? 'inputError' : ''}"
+       required="True" requiredMessage="#{msgs.pwerror}"
+	   validatorMessage="#{msgs.pwerror}">
+	   <f:validateLength minimum="6" maximum="12" />
+	   <f:ajax execute="@this" />
+	</h:inputSecret>
+	<br />
+	      
+	<h:outputText styleClass="label #{!pc.valid ? 'error' : ''}" 
+	   value="#{msgs.pwconfirm}" /><br />
+	<h:inputSecret binding="#{pc}" id="pwc" value="#{redbox.passwordConfirm}" 
+	   styleClass="#{not component.valid ? 'inputError' : ''}"
+       required="True"
+	   requiredMessage="#{msgs.pwcerror}"
+	   validator="#{redbox.pwcValidate}">
+	</h:inputSecret>
+	<br />
+	
+	<h:outputText styleClass="label #{!zip.valid ? 'error' : ''}"
+        value="#{msgs.zip}" /><br />
+	<h:inputText binding="#{zip}" value="#{redbox.zip}" 
+	   styleClass="#{not component.valid ? 'inputError' : ''}"
+       required="True"
+	   requiredMessage="#{msgs.ziperror}" validatorMessage="#{msgs.ziperror2}">
+	   <f:validateRegex pattern="\d{5}" />
+	</h:inputText>
+    <br />
+    
+    <h:commandButton styleClass="submit" value="#{msgs.cont}"
+      action="#{redbox.submit}" />
+	</h:form>
+	
+	</div>
+</body>
+</f:view>
+</html>
